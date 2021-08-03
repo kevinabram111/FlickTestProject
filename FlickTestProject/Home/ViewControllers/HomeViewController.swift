@@ -10,13 +10,18 @@ import UIKit
 class HomeViewController: UIViewController {
   
   @IBOutlet weak var startButton: UIButton!
-
+  @IBOutlet weak var categoryCollectionView: UICollectionView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     startButton.layer.backgroundColor = UIColor.white.cgColor
     startButton.layer.cornerRadius = 10
     startButton.setTitleFont(text: "Get Started", fontColor: .black)
     startButton.addTarget(self, action: #selector(tapStartButton), for: .touchUpInside)
+    
+    categoryCollectionView.delegate = self
+    categoryCollectionView.dataSource = self
+    categoryCollectionView.registerReusableCellNib(CategoryCollectionViewCell.self)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +40,8 @@ class HomeViewController: UIViewController {
   }
 }
 
+// MARK: - Extensions
+
 extension HomeViewController {
   @objc func tapStartButton() {
     print("do something in here")
@@ -43,8 +50,8 @@ extension HomeViewController {
       self.startButton.backgroundColor = .init(white: 1, alpha: 0.5)
     } completion: { Bool in
       // MARK: - Open an alert sth here
-//      let vc = VisionViewController()
-//      self.navigationController?.pushViewController(vc, animated: true)
+      //      let vc = VisionViewController()
+      //      self.navigationController?.pushViewController(vc, animated: true)
       
       UIView.animate(withDuration: 0.1, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn) {
         self.startButton.backgroundColor = .init(white: 1, alpha: 1)
@@ -52,5 +59,16 @@ extension HomeViewController {
         print("success")
       }
     }
+  }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+    return cell
   }
 }

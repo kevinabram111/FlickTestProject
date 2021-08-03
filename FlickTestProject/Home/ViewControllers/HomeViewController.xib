@@ -4,16 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Poppins-Regular.ttf">
-            <string>Poppins-Regular</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FlickTestProject" customModuleProvider="target">
             <connections>
+                <outlet property="categoryCollectionView" destination="owO-yS-ikb" id="leg-nV-vr8"/>
                 <outlet property="startButton" destination="p4h-GZ-tWK" id="beD-Gy-BOk"/>
                 <outlet property="view" destination="iN0-l3-epB" id="fUG-M9-D4F"/>
             </connections>
@@ -31,23 +28,36 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a herb or a fruit on the camera, and we will give you some information about it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-Xy-Aqm">
-                    <rect key="frame" x="30" y="0.0" width="260" height="75"/>
-                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="40"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="owO-yS-ikb">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="5fu-ng-f90"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U31-U4-qbM">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="owO-yS-ikb" secondAttribute="trailing" id="43t-qI-fUE"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="p4h-GZ-tWK" secondAttribute="bottom" constant="30" id="4iR-1u-FZE"/>
                 <constraint firstItem="p4h-GZ-tWK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="Hmy-wD-8Db"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p4h-GZ-tWK" secondAttribute="trailing" constant="60" id="eAg-jK-FEx"/>
-                <constraint firstAttribute="trailing" secondItem="LO9-Xy-Aqm" secondAttribute="trailing" constant="30" id="gZR-Cb-wnf"/>
-                <constraint firstItem="LO9-Xy-Aqm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gdi-qA-Xl2"/>
-                <constraint firstItem="LO9-Xy-Aqm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="qwS-Lh-kAL"/>
+                <constraint firstItem="owO-yS-ikb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jrI-ho-6jU"/>
+                <constraint firstItem="owO-yS-ikb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="u0J-av-TFs"/>
             </constraints>
             <point key="canvasLocation" x="139" y="144"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

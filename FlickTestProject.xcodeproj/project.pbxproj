@@ -32,6 +32,11 @@
 		4338D4DE26A955DC0075037A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4338D4D426A955DC0075037A /* Poppins-SemiBold.ttf */; };
 		4338D4DF26A955DC0075037A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4338D4D426A955DC0075037A /* Poppins-SemiBold.ttf */; };
 		4338D4E026A955DC0075037A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4338D4D426A955DC0075037A /* Poppins-SemiBold.ttf */; };
+		43DC50EE26B95D750049DB6A /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC50EC26B95D750049DB6A /* CategoryCollectionViewCell.swift */; };
+		43DC50EF26B95D750049DB6A /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43DC50ED26B95D750049DB6A /* CategoryCollectionViewCell.xib */; };
+		43DC517B26B95E610049DB6A /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC517A26B95E610049DB6A /* UITableView.swift */; };
+		43DC517D26B95EAB0049DB6A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC517C26B95EAB0049DB6A /* UICollectionView.swift */; };
+		43DC517F26B95ECE0049DB6A /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DC517E26B95ECE0049DB6A /* Reusable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +74,11 @@
 		4338D4D226A955DC0075037A /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		4338D4D326A955DC0075037A /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		4338D4D426A955DC0075037A /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		43DC50EC26B95D750049DB6A /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		43DC50ED26B95D750049DB6A /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		43DC517A26B95E610049DB6A /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		43DC517C26B95EAB0049DB6A /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		43DC517E26B95ECE0049DB6A /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,9 +129,9 @@
 		4338D49726A944CA0075037A /* FlickTestProject */ = {
 			isa = PBXGroup;
 			children = (
-				4338D4CD26A954F60075037A /* Utilities */,
-				4338D4CB26A952DE0075037A /* ViewControllers */,
 				4338D4C626A94B930075037A /* Resources */,
+				4338D4CD26A954F60075037A /* Utilities */,
+				4338D4CC26A952E80075037A /* Home */,
 				4338D49826A944CA0075037A /* AppDelegate.swift */,
 				4338D4A326A944CC0075037A /* LaunchScreen.storyboard */,
 				4338D4A626A944CC0075037A /* Info.plist */,
@@ -154,19 +164,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		4338D4CB26A952DE0075037A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4338D4CC26A952E80075037A /* Home */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		4338D4CC26A952E80075037A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				4338D49C26A944CA0075037A /* HomeViewController.swift */,
-				4338D4C726A94D790075037A /* HomeViewController.xib */,
+				43DC50EB26B95D500049DB6A /* Views */,
+				43DC50EA26B95D180049DB6A /* ViewControllers */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -176,6 +178,9 @@
 			children = (
 				4338D4CE26A955330075037A /* UIButton.swift */,
 				4332E52D26A973AB00BAE8A1 /* UIFont.swift */,
+				43DC517A26B95E610049DB6A /* UITableView.swift */,
+				43DC517C26B95EAB0049DB6A /* UICollectionView.swift */,
+				43DC517E26B95ECE0049DB6A /* Reusable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -189,6 +194,24 @@
 				4338D4D426A955DC0075037A /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		43DC50EA26B95D180049DB6A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4338D49C26A944CA0075037A /* HomeViewController.swift */,
+				4338D4C726A94D790075037A /* HomeViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		43DC50EB26B95D500049DB6A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43DC50EC26B95D750049DB6A /* CategoryCollectionViewCell.swift */,
+				43DC50ED26B95D750049DB6A /* CategoryCollectionViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +322,7 @@
 				4338D4DE26A955DC0075037A /* Poppins-SemiBold.ttf in Resources */,
 				4338D4DB26A955DC0075037A /* Poppins-Bold.ttf in Resources */,
 				4338D4D526A955DC0075037A /* Poppins-Medium.ttf in Resources */,
+				43DC50EF26B95D750049DB6A /* CategoryCollectionViewCell.xib in Resources */,
 				4338D4A226A944CC0075037A /* Assets.xcassets in Resources */,
 				4338D4C826A94D790075037A /* HomeViewController.xib in Resources */,
 				4338D4D826A955DC0075037A /* Poppins-Regular.ttf in Resources */,
@@ -337,9 +361,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4338D49D26A944CA0075037A /* HomeViewController.swift in Sources */,
+				43DC50EE26B95D750049DB6A /* CategoryCollectionViewCell.swift in Sources */,
+				43DC517D26B95EAB0049DB6A /* UICollectionView.swift in Sources */,
 				4338D49926A944CA0075037A /* AppDelegate.swift in Sources */,
+				43DC517F26B95ECE0049DB6A /* Reusable.swift in Sources */,
 				4332E52E26A973AB00BAE8A1 /* UIFont.swift in Sources */,
 				4338D4CF26A955330075037A /* UIButton.swift in Sources */,
+				43DC517B26B95E610049DB6A /* UITableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
