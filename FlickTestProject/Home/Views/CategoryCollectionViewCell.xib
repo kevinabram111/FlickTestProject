@@ -17,28 +17,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="438" height="153"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGe-de-cKT">
-                        <rect key="frame" x="0.0" y="0.0" width="438" height="153"/>
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGe-de-cKT">
+                        <rect key="frame" x="16" y="0.0" width="406" height="34.5"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tRN-Nm-aUM">
+                        <rect key="frame" x="16" y="34.5" width="406" height="5"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="yMH-VW-U9l"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="xGe-de-cKT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HX3-hA-axJ"/>
-                <constraint firstAttribute="bottom" secondItem="xGe-de-cKT" secondAttribute="bottom" id="K2p-P1-SDD"/>
-                <constraint firstAttribute="trailing" secondItem="xGe-de-cKT" secondAttribute="trailing" id="jxG-2F-Jus"/>
-                <constraint firstItem="xGe-de-cKT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="oH5-ae-Imh"/>
+                <constraint firstAttribute="trailing" secondItem="tRN-Nm-aUM" secondAttribute="trailing" constant="16" id="HiP-w6-BoW"/>
+                <constraint firstItem="tRN-Nm-aUM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Ypj-Qv-kpn"/>
+                <constraint firstItem="tRN-Nm-aUM" firstAttribute="top" secondItem="xGe-de-cKT" secondAttribute="bottom" id="fST-p2-avl"/>
+                <constraint firstAttribute="trailing" secondItem="xGe-de-cKT" secondAttribute="trailing" constant="16" id="jxG-2F-Jus"/>
+                <constraint firstItem="xGe-de-cKT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="oH5-ae-Imh"/>
             </constraints>
             <size key="customSize" width="438" height="153"/>
+            <connections>
+                <outlet property="categoryButton" destination="xGe-de-cKT" id="k7d-hC-RaE"/>
+                <outlet property="lineView" destination="tRN-Nm-aUM" id="hDt-is-WCb"/>
+            </connections>
             <point key="canvasLocation" x="250.72463768115944" y="133.59375"/>
         </collectionViewCell>
     </objects>
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

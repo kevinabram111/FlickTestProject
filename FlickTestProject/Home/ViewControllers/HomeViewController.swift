@@ -7,10 +7,22 @@
 
 import UIKit
 
+struct Category {
+  var name: String
+  var isSelected: Bool = false
+}
+
 class HomeViewController: UIViewController {
   
   @IBOutlet weak var startButton: UIButton!
   @IBOutlet weak var categoryCollectionView: UICollectionView!
+  
+  var categoryData: [Category] = [
+    .init(name: "Western"),
+    .init(name: "Eastern"),
+    .init(name: "Indonesian"),
+    .init(name: "Japanese")
+  ]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,6 +34,15 @@ class HomeViewController: UIViewController {
     categoryCollectionView.delegate = self
     categoryCollectionView.dataSource = self
     categoryCollectionView.registerReusableCellNib(CategoryCollectionViewCell.self)
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    layout.scrollDirection = .horizontal
+    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+    
+    categoryCollectionView.collectionViewLayout = layout
+    categoryCollectionView.backgroundColor = .clear
+    categoryCollectionView.showsHorizontalScrollIndicator = false
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -62,13 +83,34 @@ extension HomeViewController {
   }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 5
+    return categoryData.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+    cell.categoryButton.setTitleFont(text: categoryData[indexPath.row].name, fontColor: .black)
+    cell.isEnabled = categoryData[indexPath.row].isSelected
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    refreshCategories()
+    categoryData[indexPath.row].isSelected = true
+    categoryCollectionView.reloadData()
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 1, height: 100)
+  }
+  
+  private func refreshCategories() {
+    categoryData = [
+      .init(name: "Western"),
+      .init(name: "Eastern"),
+      .init(name: "Indonesian"),
+      .init(name: "Japanese")
+    ]
   }
 }

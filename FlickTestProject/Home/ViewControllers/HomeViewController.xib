@@ -28,11 +28,11 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="owO-yS-ikb">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="owO-yS-ikb">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="5fu-ng-f90"/>
+                        <constraint firstAttribute="height" constant="80" id="5fu-ng-f90"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U31-U4-qbM">
                         <size key="itemSize" width="128" height="128"/>
@@ -50,7 +50,7 @@
                 <constraint firstItem="p4h-GZ-tWK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="Hmy-wD-8Db"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p4h-GZ-tWK" secondAttribute="trailing" constant="60" id="eAg-jK-FEx"/>
                 <constraint firstItem="owO-yS-ikb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jrI-ho-6jU"/>
-                <constraint firstItem="owO-yS-ikb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="u0J-av-TFs"/>
+                <constraint firstItem="owO-yS-ikb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="u0J-av-TFs"/>
             </constraints>
             <point key="canvasLocation" x="139" y="144"/>
         </view>
