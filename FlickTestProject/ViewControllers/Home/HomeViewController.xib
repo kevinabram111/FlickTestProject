@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19115.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.5"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FlickTestProject" customModuleProvider="target">
+            <connections>
+                <outlet property="startButton" destination="p4h-GZ-tWK" id="beD-Gy-BOk"/>
+                <outlet property="view" destination="iN0-l3-epB" id="fUG-M9-D4F"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4h-GZ-tWK">
+                    <rect key="frame" x="60" y="383.5" width="200" height="66.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="p4h-GZ-tWK" secondAttribute="height" multiplier="15:5" id="4Gg-fw-J3S"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a herb or a fruit on the camera, and we will give you some information about it" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LO9-Xy-Aqm">
+                    <rect key="frame" x="30" y="0.0" width="260" height="75"/>
+                    <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="40"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="p4h-GZ-tWK" secondAttribute="bottom" constant="30" id="4iR-1u-FZE"/>
+                <constraint firstItem="p4h-GZ-tWK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="Hmy-wD-8Db"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p4h-GZ-tWK" secondAttribute="trailing" constant="60" id="eAg-jK-FEx"/>
+                <constraint firstAttribute="trailing" secondItem="LO9-Xy-Aqm" secondAttribute="trailing" constant="30" id="gZR-Cb-wnf"/>
+                <constraint firstItem="LO9-Xy-Aqm" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gdi-qA-Xl2"/>
+                <constraint firstItem="LO9-Xy-Aqm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="qwS-Lh-kAL"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="144"/>
+        </view>
+    </objects>
+</document>
