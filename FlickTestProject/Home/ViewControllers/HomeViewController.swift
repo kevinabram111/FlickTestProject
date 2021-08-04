@@ -10,6 +10,7 @@ import UIKit
 struct Category {
   var name: String
   var isSelected: Bool = false
+  var quantity: Int = 1
 }
 
 class HomeViewController: UIViewController {
@@ -144,7 +145,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: MenuTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-    // TODO: - Set the values here
+    cell.quantity = 1
     return cell
   }
 }
