@@ -10,6 +10,8 @@ import UIKit
 struct Category {
   var name: String
   var isSelected: Bool = false
+  var menuList: [Menu]
+  var total: Int
 }
 
 struct Menu {
@@ -23,18 +25,46 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var menuTableView: UITableView!
   
   var categoryData: [Category] = [
-    .init(name: "Korean", isSelected: true),
-    .init(name: "Japanese"),
-    .init(name: "Indonesian"),
-    .init(name: "Chinese"),
-    .init(name: "American")
-  ]
-  
-  var menuData: [Menu] = [
-    .init(name: "name", quantity: 1),
-    .init(name: "name", quantity: 0),
-    .init(name: "name", quantity: 3),
-    .init(name: "name", quantity: 0)
+    .init(name: "Korean", isSelected: true, menuList: [
+      .init(name: "Korean Name", quantity: 1),
+      .init(name: "Korean Name", quantity: 0),
+      .init(name: "Korean Name", quantity: 3),
+      .init(name: "Korean Name", quantity: 0)
+    ],
+          total: 4
+         ),
+    .init(name: "Japanese", isSelected: false, menuList: [
+      .init(name: "Japanese Name", quantity: 1),
+      .init(name: "Japanese Name", quantity: 0),
+      .init(name: "Japanese Name", quantity: 3),
+      .init(name: "Japanese Name", quantity: 0)
+    ],
+          total: 4
+         ),
+    .init(name: "Chinese", isSelected: false, menuList: [
+      .init(name: "Chinese Name", quantity: 1),
+      .init(name: "Chinese Name", quantity: 0),
+      .init(name: "Chinese Name", quantity: 3),
+      .init(name: "Chinese Name", quantity: 0)
+    ],
+          total: 4
+         ),
+    .init(name: "Indonesian", isSelected: false, menuList: [
+      .init(name: "Indonesian Name", quantity: 1),
+      .init(name: "Indonesian Name", quantity: 0),
+      .init(name: "Indonesian Name", quantity: 3),
+      .init(name: "Indonesian Name", quantity: 0)
+    ],
+          total: 4
+         ),
+    .init(name: "American", isSelected: false, menuList: [
+      .init(name: "American Name", quantity: 1),
+      .init(name: "American Name", quantity: 0),
+      .init(name: "American Name", quantity: 3),
+      .init(name: "American Name", quantity: 0)
+    ],
+          total: 4
+         )
   ]
   
   var selectedCategoryIndex = 0 {
@@ -136,13 +166,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
   }
   
   private func refreshCategories() {
-    categoryData = [
-      .init(name: "Korean"),
-      .init(name: "Japanese"),
-      .init(name: "Indonesian"),
-      .init(name: "Chinese"),
-      .init(name: "American")
-    ]
+    var index = 0
+    for _ in categoryData {
+      categoryData[index].isSelected = false
+      index = index + 1
+    }
   }
 }
 
@@ -150,14 +178,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // TODO: - Change this into a real value
-    return 5
+    return categoryData[selectedCategoryIndex].menuList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: MenuTableViewCell = tableView.dequeueReusableCell(for: indexPath)
     cell.delegate = self
-    cell.quantity = menuData[indexPath.row].quantity
+    cell.row = indexPath.row
+    cell.quantity = categoryData[selectedCategoryIndex].menuList[indexPath.row].quantity
     return cell
   }
 }
@@ -166,8 +194,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: MenuTableViewCellDelegate {
   func didTapButton(row: Int, quantity: Int) {
-    menuData[row].quantity = quantity
-    // TODO: - Create the view and disable/enable depending on the quantity
-    print(menuData.reduce(0, {$0 + $1.quantity}))
+    categoryData[selectedCategoryIndex].menuList[row].quantity = quantity
+    
+    /// Update the total on the selected category
+    let totalSelectedCategory = categoryData.reduce(0, {$0 + $1.menuList[row].quantity})
+    categoryData[selectedCategoryIndex].total = totalSelectedCategory
+    
+    /// Get the total on all categories
+    let totalAll = categoryData.reduce(0, {$0 + $1.total})
+    print(totalAll)
   }
 }
