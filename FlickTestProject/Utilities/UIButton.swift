@@ -36,7 +36,7 @@ extension UIButton {
     return font
   }
   
-  /// Customize the button's title font and text
+  /// Set the button's title font and text
   func setTitleFont(text: String, fontColor: UIColor, font: UIFont = mediumApplicationFont(withSize: 20), state: UIControl.State = .normal) {
     let attrString = NSMutableAttributedString(string: text)
     attrString.addAttribute(NSAttributedString.Key.font, value: font, range: NSMakeRange(0, text.count))

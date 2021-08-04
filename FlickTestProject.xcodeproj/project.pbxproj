@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4331B48826BA3989001E8510 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48626BA3989001E8510 /* MenuTableViewCell.swift */; };
+		4331B48926BA3989001E8510 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4331B48726BA3989001E8510 /* MenuTableViewCell.xib */; };
 		4332E52E26A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
 		4332E52F26A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
 		4332E53026A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4331B48626BA3989001E8510 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		4331B48726BA3989001E8510 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		4332E52D26A973AB00BAE8A1 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		4338D49526A944CA0075037A /* FlickTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338D49826A944CA0075037A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -210,6 +214,8 @@
 			children = (
 				43DC50EC26B95D750049DB6A /* CategoryCollectionViewCell.swift */,
 				43DC50ED26B95D750049DB6A /* CategoryCollectionViewCell.xib */,
+				4331B48626BA3989001E8510 /* MenuTableViewCell.swift */,
+				4331B48726BA3989001E8510 /* MenuTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4331B48926BA3989001E8510 /* MenuTableViewCell.xib in Resources */,
 				4338D4A526A944CC0075037A /* LaunchScreen.storyboard in Resources */,
 				4338D4DE26A955DC0075037A /* Poppins-SemiBold.ttf in Resources */,
 				4338D4DB26A955DC0075037A /* Poppins-Bold.ttf in Resources */,
@@ -365,6 +372,7 @@
 				43DC517D26B95EAB0049DB6A /* UICollectionView.swift in Sources */,
 				4338D49926A944CA0075037A /* AppDelegate.swift in Sources */,
 				43DC517F26B95ECE0049DB6A /* Reusable.swift in Sources */,
+				4331B48826BA3989001E8510 /* MenuTableViewCell.swift in Sources */,
 				4332E52E26A973AB00BAE8A1 /* UIFont.swift in Sources */,
 				4338D4CF26A955330075037A /* UIButton.swift in Sources */,
 				43DC517B26B95E610049DB6A /* UITableView.swift in Sources */,

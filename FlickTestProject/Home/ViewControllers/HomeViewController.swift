@@ -14,23 +14,54 @@ struct Category {
 
 class HomeViewController: UIViewController {
   
-  @IBOutlet weak var startButton: UIButton!
   @IBOutlet weak var categoryCollectionView: UICollectionView!
+  @IBOutlet weak var menuTableView: UITableView!
   
   var categoryData: [Category] = [
-    .init(name: "Western"),
-    .init(name: "Eastern"),
+    .init(name: "Korean", isSelected: true),
+    .init(name: "Japanese"),
     .init(name: "Indonesian"),
-    .init(name: "Japanese")
+    .init(name: "Chinese"),
+    .init(name: "American")
   ]
+  
+  var selectedCategoryIndex = 0 {
+    didSet {
+      /// Perform changes in collection view
+      refreshCategories()
+      categoryData[selectedCategoryIndex].isSelected = true
+      categoryCollectionView.reloadData()
+      
+      /// Perform changes in table view
+      menuTableView.tableHeaderView = constructTableHeaderView()
+      menuTableView.reloadData()
+    }
+  }
+  
+  /// Table header view that is shown on top of the tableview
+  /// I created it programmatically instead of creating xibs to save space
+  func constructTableHeaderView() -> UIView {
+    let tableHeaderView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    let headerLabel = UILabel()
+    headerLabel.font = .boldApplicationFont(withSize: 16)
+    headerLabel.text = categoryData[selectedCategoryIndex].name
+    
+    /// Setup constraints
+    tableHeaderView.addSubview(headerLabel)
+    NSLayoutConstraint.activate([
+      headerLabel.topAnchor.constraint(equalTo: tableHeaderView.topAnchor),
+      headerLabel.leadingAnchor.constraint(equalTo: tableHeaderView.leadingAnchor, constant: 16),
+      headerLabel.trailingAnchor.constraint(equalTo: tableHeaderView.trailingAnchor, constant: 16),
+      headerLabel.bottomAnchor.constraint(equalTo: tableHeaderView.bottomAnchor)
+    ])
+    headerLabel.translatesAutoresizingMaskIntoConstraints = false
+    
+    return tableHeaderView
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    startButton.layer.backgroundColor = UIColor.white.cgColor
-    startButton.layer.cornerRadius = 10
-    startButton.setTitleFont(text: "Get Started", fontColor: .black)
-    startButton.addTarget(self, action: #selector(tapStartButton), for: .touchUpInside)
-    
+    /// Initialize Collection View
     categoryCollectionView.delegate = self
     categoryCollectionView.dataSource = self
     categoryCollectionView.registerReusableCellNib(CategoryCollectionViewCell.self)
@@ -43,13 +74,22 @@ class HomeViewController: UIViewController {
     categoryCollectionView.collectionViewLayout = layout
     categoryCollectionView.backgroundColor = .clear
     categoryCollectionView.showsHorizontalScrollIndicator = false
+    
+    /// Initialize Table View
+    
+    menuTableView.delegate = self
+    menuTableView.dataSource = self
+    menuTableView.registerReusableCellNib(MenuTableViewCell.self)
+    
+    menuTableView.tableHeaderView = constructTableHeaderView()
+    menuTableView.tableFooterView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     navigationItem.title = "Flick"
-    self.navigationController?.navigationBar.prefersLargeTitles = true
+    self.navigationController?.navigationBar.prefersLargeTitles = false
   }
   
   init() {
@@ -61,27 +101,7 @@ class HomeViewController: UIViewController {
   }
 }
 
-// MARK: - Extensions
-
-extension HomeViewController {
-  @objc func tapStartButton() {
-    print("do something in here")
-    
-    UIView.animate(withDuration: 0.1, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut) {
-      self.startButton.backgroundColor = .init(white: 1, alpha: 0.5)
-    } completion: { Bool in
-      // MARK: - Open an alert sth here
-      //      let vc = VisionViewController()
-      //      self.navigationController?.pushViewController(vc, animated: true)
-      
-      UIView.animate(withDuration: 0.1, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn) {
-        self.startButton.backgroundColor = .init(white: 1, alpha: 1)
-      } completion: { Bool in
-        print("success")
-      }
-    }
-  }
-}
+// MARK: - UICollectionView
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -90,27 +110,41 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-    cell.categoryButton.setTitleFont(text: categoryData[indexPath.row].name, fontColor: .black)
+    cell.categoryButton.setTitleFont(text: categoryData[indexPath.row].name, fontColor: .black, font: .boldSystemFont(ofSize: 14))
     cell.isEnabled = categoryData[indexPath.row].isSelected
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    refreshCategories()
-    categoryData[indexPath.row].isSelected = true
-    categoryCollectionView.reloadData()
+    selectedCategoryIndex = indexPath.row
   }
   
   func collectionView(_ collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: 1, height: 100)
+    return CGSize(width: 1, height: 40)
   }
   
   private func refreshCategories() {
     categoryData = [
-      .init(name: "Western"),
-      .init(name: "Eastern"),
+      .init(name: "Korean"),
+      .init(name: "Japanese"),
       .init(name: "Indonesian"),
-      .init(name: "Japanese")
+      .init(name: "Chinese"),
+      .init(name: "American")
     ]
+  }
+}
+
+// MARK: - UITableView
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // TODO: - Change this into a real value
+    return 5
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell: MenuTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+    // TODO: - Set the values here
+    return cell
   }
 }
