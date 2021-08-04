@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MenuTableViewCellDelegate {
+  func didTapButton(row: Int, quantity: Int)
+}
+
 class MenuTableViewCell: UITableViewCell {
+  
+  var delegate: MenuTableViewCellDelegate?
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var menuImageView: UIImageView!
@@ -20,17 +26,22 @@ class MenuTableViewCell: UITableViewCell {
   
   @IBAction func addButtonTapped(_ sender: UIButton) {
     quantity = 1
+    delegate?.didTapButton(row: row, quantity: quantity)
   }
   
   @IBAction func addQuantityButtonTapped(_ sender: UIButton) {
     if quantity < 99 {
       quantity = quantity + 1
+      delegate?.didTapButton(row: row, quantity: quantity)
     }
   }
   
   @IBAction func minusQuantityButtonTapped(_ sender: UIButton) {
     quantity = quantity - 1
+    delegate?.didTapButton(row: row, quantity: quantity)
   }
+  
+  var row: Int = 0
   
   var quantity = 0 {
     didSet {

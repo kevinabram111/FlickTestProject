@@ -10,6 +10,10 @@ import UIKit
 struct Category {
   var name: String
   var isSelected: Bool = false
+}
+
+struct Menu {
+  var name: String
   var quantity: Int = 1
 }
 
@@ -24,6 +28,13 @@ class HomeViewController: UIViewController {
     .init(name: "Indonesian"),
     .init(name: "Chinese"),
     .init(name: "American")
+  ]
+  
+  var menuData: [Menu] = [
+    .init(name: "name", quantity: 1),
+    .init(name: "name", quantity: 0),
+    .init(name: "name", quantity: 3),
+    .init(name: "name", quantity: 0)
   ]
   
   var selectedCategoryIndex = 0 {
@@ -145,7 +156,18 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: MenuTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-    cell.quantity = 1
+    cell.delegate = self
+    cell.quantity = menuData[indexPath.row].quantity
     return cell
+  }
+}
+
+// MARK: - MenuTableViewCellDelegate
+
+extension HomeViewController: MenuTableViewCellDelegate {
+  func didTapButton(row: Int, quantity: Int) {
+    menuData[row].quantity = quantity
+    // TODO: - Create the view and disable/enable depending on the quantity
+    print(menuData.reduce(0, {$0 + $1.quantity}))
   }
 }
