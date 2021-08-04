@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4331B48826BA3989001E8510 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48626BA3989001E8510 /* MenuTableViewCell.swift */; };
 		4331B48926BA3989001E8510 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4331B48726BA3989001E8510 /* MenuTableViewCell.xib */; };
+		4331B48B26BAE4AD001E8510 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48A26BAE4AD001E8510 /* Formatter.swift */; };
+		4331B48D26BAE4C4001E8510 /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48C26BAE4C4001E8510 /* Numeric.swift */; };
 		4332E52E26A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
 		4332E52F26A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
 		4332E53026A973AB00BAE8A1 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4332E52D26A973AB00BAE8A1 /* UIFont.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		4331B48626BA3989001E8510 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		4331B48726BA3989001E8510 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		4331B48A26BAE4AD001E8510 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		4331B48C26BAE4C4001E8510 /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		4332E52D26A973AB00BAE8A1 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		4338D49526A944CA0075037A /* FlickTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4338D49826A944CA0075037A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				43DC517A26B95E610049DB6A /* UITableView.swift */,
 				43DC517C26B95EAB0049DB6A /* UICollectionView.swift */,
 				43DC517E26B95ECE0049DB6A /* Reusable.swift */,
+				4331B48A26BAE4AD001E8510 /* Formatter.swift */,
+				4331B48C26BAE4C4001E8510 /* Numeric.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -369,6 +375,8 @@
 			files = (
 				4338D49D26A944CA0075037A /* HomeViewController.swift in Sources */,
 				43DC50EE26B95D750049DB6A /* CategoryCollectionViewCell.swift in Sources */,
+				4331B48B26BAE4AD001E8510 /* Formatter.swift in Sources */,
+				4331B48D26BAE4C4001E8510 /* Numeric.swift in Sources */,
 				43DC517D26B95EAB0049DB6A /* UICollectionView.swift in Sources */,
 				4338D49926A944CA0075037A /* AppDelegate.swift in Sources */,
 				43DC517F26B95ECE0049DB6A /* Reusable.swift in Sources */,

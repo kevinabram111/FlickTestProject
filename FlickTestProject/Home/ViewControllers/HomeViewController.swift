@@ -12,11 +12,14 @@ struct Category {
   var isSelected: Bool = false
   var menuList: [Menu]
   var total: Int
+  var totalPrice: Int
 }
 
 struct Menu {
   var name: String
+  var description: String = ""
   var quantity: Int = 1
+  var price: Int = 10000
 }
 
 class HomeViewController: UIViewController {
@@ -31,7 +34,8 @@ class HomeViewController: UIViewController {
       .init(name: "Korean Name", quantity: 3),
       .init(name: "Korean Name", quantity: 0)
     ],
-          total: 4
+          total: 4,
+          totalPrice: 40000
          ),
     .init(name: "Japanese", isSelected: false, menuList: [
       .init(name: "Japanese Name", quantity: 1),
@@ -39,7 +43,8 @@ class HomeViewController: UIViewController {
       .init(name: "Japanese Name", quantity: 3),
       .init(name: "Japanese Name", quantity: 0)
     ],
-          total: 4
+          total: 4,
+          totalPrice: 40000
          ),
     .init(name: "Chinese", isSelected: false, menuList: [
       .init(name: "Chinese Name", quantity: 1),
@@ -47,7 +52,8 @@ class HomeViewController: UIViewController {
       .init(name: "Chinese Name", quantity: 3),
       .init(name: "Chinese Name", quantity: 0)
     ],
-          total: 4
+          total: 4,
+          totalPrice: 40000
          ),
     .init(name: "Indonesian", isSelected: false, menuList: [
       .init(name: "Indonesian Name", quantity: 1),
@@ -55,7 +61,8 @@ class HomeViewController: UIViewController {
       .init(name: "Indonesian Name", quantity: 3),
       .init(name: "Indonesian Name", quantity: 0)
     ],
-          total: 4
+          total: 4,
+          totalPrice: 40000
          ),
     .init(name: "American", isSelected: false, menuList: [
       .init(name: "American Name", quantity: 1),
@@ -63,7 +70,8 @@ class HomeViewController: UIViewController {
       .init(name: "American Name", quantity: 3),
       .init(name: "American Name", quantity: 0)
     ],
-          total: 4
+          total: 4,
+          totalPrice: 40000
          )
   ]
   
@@ -183,9 +191,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell: MenuTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-    cell.delegate = self
-    cell.row = indexPath.row
-    cell.quantity = categoryData[selectedCategoryIndex].menuList[indexPath.row].quantity
+    cell.setupData(
+      delegate: self,
+      row: indexPath.row,
+      menu: categoryData[selectedCategoryIndex].menuList[indexPath.row]
+    )
     return cell
   }
 }
@@ -196,12 +206,16 @@ extension HomeViewController: MenuTableViewCellDelegate {
   func didTapButton(row: Int, quantity: Int) {
     categoryData[selectedCategoryIndex].menuList[row].quantity = quantity
     
-    /// Update the total on the selected category
+    /// Update the total qty and total price on the selected category
     let totalSelectedCategory = categoryData.reduce(0, {$0 + $1.menuList[row].quantity})
     categoryData[selectedCategoryIndex].total = totalSelectedCategory
+    let totalSelectedPriceCategory = categoryData.reduce(0, {$0 + ($1.menuList[row].price * $1.menuList[row].quantity)})
+    categoryData[selectedCategoryIndex].totalPrice = totalSelectedPriceCategory
     
     /// Get the total on all categories
     let totalAll = categoryData.reduce(0, {$0 + $1.total})
+    let totalPriceAll = categoryData.reduce(0, {$0 + $1.totalPrice})
     print(totalAll)
+    print(totalPriceAll)
   }
 }

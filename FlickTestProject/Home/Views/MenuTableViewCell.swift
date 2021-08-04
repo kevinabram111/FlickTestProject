@@ -13,8 +13,6 @@ protocol MenuTableViewCellDelegate {
 
 class MenuTableViewCell: UITableViewCell {
   
-  var delegate: MenuTableViewCellDelegate?
-  
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var menuImageView: UIImageView!
   @IBOutlet weak var descriptionLabel: UILabel!
@@ -41,9 +39,20 @@ class MenuTableViewCell: UITableViewCell {
     delegate?.didTapButton(row: row, quantity: quantity)
   }
   
-  var row: Int = 0
+  func setupData(delegate: MenuTableViewCellDelegate?, row: Int, menu: Menu) {
+    self.delegate = delegate
+    self.row = row
+    self.titleLabel.text = menu.name
+    self.priceLabel.text = "Rp. \(menu.price.formattedWithSeparator)"
+    self.descriptionLabel.text = menu.description
+    self.quantity = menu.quantity
+  }
   
-  var quantity = 0 {
+  private var delegate: MenuTableViewCellDelegate?
+  
+  private var row: Int = 0
+  
+  private var quantity = 0 {
     didSet {
       if quantity > 0 {
         if addButton.isHidden == false && addQuantityButton.isHidden == true && minusQuantityButton.isHidden == true && quantityLabel.isHidden == true {
