@@ -38,17 +38,25 @@ class HomeViewController: UIViewController {
   
   var categoryData: [Category] = []
   
+  /// A flag to control whether the app has been loaded fully
+  var isInitialized: Bool = false
+  
   var selectedCategoryIndex = 0 {
     didSet {
       /// Perform changes in collection view
       refreshCategories()
-      categoryData[selectedCategoryIndex].isSelected = true
+      let realm = try! Realm()
+      try! realm.write {
+        categoryData[selectedCategoryIndex].isSelected = true
+      }
       categoryCollectionView.reloadData()
       
       /// Perform changes in table view
       menuTableView.tableHeaderView = constructTableHeaderView()
       menuTableView.reloadData()
-      menuTableView.scrollToRow(at: .init(row: 0, section: 0), at: .bottom, animated: true)
+      if categoryData[selectedCategoryIndex].menuList.count != 0 && isInitialized == true {
+        menuTableView.scrollToRow(at: .init(row: 0, section: 0), at: .bottom, animated: true)
+      }
     }
   }
   
@@ -82,6 +90,9 @@ class HomeViewController: UIViewController {
     /// Design The Cart View
     cartView.layer.cornerRadius = 10
     quantityContainerView.layer.cornerRadius = 8
+    
+    /// Set the flag for initialized successfully
+    isInitialized = true
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +136,9 @@ extension HomeViewController {
   }
   
   /// Function to handle show or hide cart view
-  private func showOrHideCartView(quantity: Int, price: Int) {
+  private func showOrHideCartView() {
+    let quantity = categoryData.reduce(0, {$0 + $1.total})
+    let price = categoryData.reduce(0, {$0 + $1.totalPrice})
     if quantity > 0 || price > 0 && cartView.isHidden == false {
       cartView.isHidden = false
     } else if quantity == 0 || price == 0 && cartView.isHidden == true {
@@ -243,6 +256,15 @@ extension HomeViewController {
       }
     }
     categoryData = Array(results)
+    /// Get the active index
+    var startIndex = 0
+    for index in categoryData {
+      if index.isSelected == true {
+        selectedCategoryIndex = startIndex
+      }
+      startIndex = startIndex + 1
+    }
+    showOrHideCartView()
   }
 }
 
@@ -270,8 +292,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
   
   private func refreshCategories() {
     var index = 0
+    let realm = try! Realm()
     for _ in categoryData {
-      categoryData[index].isSelected = false
+      try! realm.write {
+        categoryData[index].isSelected = false
+      }
       index = index + 1
     }
   }
@@ -299,6 +324,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension HomeViewController: MenuTableViewCellDelegate {
   func didTapButton(row: Int, quantity: Int) {
+    let realm = try! Realm()
+    try! realm.write {
     categoryData[selectedCategoryIndex].menuList[row].quantity = quantity
     
     /// Update the total qty and total price on the selected category
@@ -306,11 +333,9 @@ extension HomeViewController: MenuTableViewCellDelegate {
     categoryData[selectedCategoryIndex].total = totalSelectedCategory
     let totalSelectedPriceCategory = categoryData[selectedCategoryIndex].menuList.reduce(0, {$0 + ($1.quantity * $1.price)})
     categoryData[selectedCategoryIndex].totalPrice = totalSelectedPriceCategory
+    }
     
-    /// Get the total on all categories
-    let totalAll = categoryData.reduce(0, {$0 + $1.total})
-    let totalPriceAll = categoryData.reduce(0, {$0 + $1.totalPrice})
-    print(categoryData[selectedCategoryIndex])
-    showOrHideCartView(quantity: totalAll, price: totalPriceAll)
+    /// Show or hide cart view
+    showOrHideCartView()
   }
 }

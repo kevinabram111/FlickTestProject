@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Used to format number into indonesian currency format
 extension Formatter {
   static let withSeparator: NumberFormatter = {
     let formatter = NumberFormatter()

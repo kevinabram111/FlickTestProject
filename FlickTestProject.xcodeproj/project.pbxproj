@@ -263,7 +263,6 @@
 				2A674AF3A62342912A779A1F /* Pods-FlickTestProjectTests.debug.xcconfig */,
 				C684820DE7EAEBDC50147120 /* Pods-FlickTestProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -278,7 +277,7 @@
 				4338D49126A944CA0075037A /* Sources */,
 				4338D49226A944CA0075037A /* Frameworks */,
 				4338D49326A944CA0075037A /* Resources */,
-				54D8567DA3007AB880AC0B7B /* [CP] Embed Pods Frameworks */,
+				F642145D140DBD05C2423D3B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,7 +315,7 @@
 				4338D4B126A944CC0075037A /* Sources */,
 				4338D4B226A944CC0075037A /* Frameworks */,
 				4338D4B326A944CC0075037A /* Resources */,
-				9DC13AD2D5AAB4735E50A1F4 /* [CP] Embed Pods Frameworks */,
+				658C663211C17FB671CB2D00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -415,21 +414,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		54D8567DA3007AB880AC0B7B /* [CP] Embed Pods Frameworks */ = {
+		658C663211C17FB671CB2D00 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BBF7AB34D0BDC3343E698AB /* [CP] Check Pods Manifest.lock */ = {
@@ -454,23 +453,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9DC13AD2D5AAB4735E50A1F4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A2393A53EE83718FBD1471D3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,6 +473,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F642145D140DBD05C2423D3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlickTestProject/Pods-FlickTestProject-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FB65EE2600BBCA6365DF72D4 /* [CP] Check Pods Manifest.lock */ = {

@@ -6,7 +6,7 @@ target 'FlickTestProject' do
   use_frameworks!
 
   # Pods for FlickTestProject
-  pod 'RealmSwift', '~>10'
+  pod 'RealmSwift'
 
   target 'FlickTestProjectTests' do
     inherit! :search_paths

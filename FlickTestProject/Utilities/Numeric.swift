@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Used to format number into indonesian currency format
 extension Numeric {
-    var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
+  var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
 }
