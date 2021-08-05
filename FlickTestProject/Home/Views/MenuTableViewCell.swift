@@ -44,7 +44,7 @@ class MenuTableViewCell: UITableViewCell {
     self.row = row
     self.titleLabel.text = menu.name
     self.priceLabel.text = "Rp. \(menu.price.formattedWithSeparator)"
-    self.descriptionLabel.text = menu.description
+    self.descriptionLabel.text = menu.menuDescription
     self.quantity = menu.quantity
   }
   

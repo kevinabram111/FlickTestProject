@@ -6,20 +6,21 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct Category {
-  var name: String
-  var isSelected: Bool = false
-  var menuList: [Menu]
-  var total: Int
-  var totalPrice: Int
+class Category: Object {
+  @objc dynamic var name: String = ""
+  @objc dynamic var isSelected: Bool = false
+  var menuList = List<Menu>()
+  @objc dynamic var total: Int = 0
+  @objc dynamic var totalPrice: Int = 0
 }
 
-struct Menu {
-  var name: String
-  var description: String = ""
-  var quantity: Int = 1
-  var price: Int = 10000
+class Menu: Object {
+  @objc dynamic var name: String = ""
+  @objc dynamic var menuDescription: String = ""
+  @objc dynamic var quantity: Int = 0
+  @objc dynamic var price: Int = 10000
 }
 
 class HomeViewController: UIViewController {
@@ -35,53 +36,7 @@ class HomeViewController: UIViewController {
   
   @IBOutlet weak var priceLabel: UILabel!
   
-  var categoryData: [Category] = [
-    .init(name: "Korean", isSelected: true, menuList: [
-      .init(name: "Korean Name", quantity: 0),
-      .init(name: "Korean Name", quantity: 0),
-      .init(name: "Korean Name", quantity: 0),
-      .init(name: "Korean Name", quantity: 0)
-    ],
-          total: 0,
-          totalPrice: 0
-         ),
-    .init(name: "Japanese", isSelected: false, menuList: [
-      .init(name: "Japanese Name", quantity: 0),
-      .init(name: "Japanese Name", quantity: 0),
-      .init(name: "Japanese Name", quantity: 0),
-      .init(name: "Japanese Name", quantity: 0)
-    ],
-          total: 0,
-          totalPrice: 0
-         ),
-    .init(name: "Chinese", isSelected: false, menuList: [
-      .init(name: "Chinese Name", quantity: 0),
-      .init(name: "Chinese Name", quantity: 0),
-      .init(name: "Chinese Name", quantity: 0),
-      .init(name: "Chinese Name", quantity: 0)
-    ],
-          total: 0,
-          totalPrice: 0
-         ),
-    .init(name: "Indonesian", isSelected: false, menuList: [
-      .init(name: "Indonesian Name", quantity: 0),
-      .init(name: "Indonesian Name", quantity: 0),
-      .init(name: "Indonesian Name", quantity: 0),
-      .init(name: "Indonesian Name", quantity: 0)
-    ],
-          total: 0,
-          totalPrice: 0
-         ),
-    .init(name: "American", isSelected: false, menuList: [
-      .init(name: "American Name", quantity: 0),
-      .init(name: "American Name", quantity: 0),
-      .init(name: "American Name", quantity: 0),
-      .init(name: "American Name", quantity: 0)
-    ],
-          total: 0,
-          totalPrice: 0
-         )
-  ]
+  var categoryData: [Category] = []
   
   var selectedCategoryIndex = 0 {
     didSet {
@@ -99,6 +54,9 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    /// Initialize Data
+    initialize()
+    
     /// Initialize Collection View
     categoryCollectionView.delegate = self
     categoryCollectionView.dataSource = self
@@ -166,6 +124,7 @@ extension HomeViewController {
     return tableHeaderView
   }
   
+  /// Function to handle show or hide cart view
   private func showOrHideCartView(quantity: Int, price: Int) {
     if quantity > 0 || price > 0 && cartView.isHidden == false {
       cartView.isHidden = false
@@ -174,6 +133,116 @@ extension HomeViewController {
     }
     quantityLabel.text = "\(quantity)"
     priceLabel.text = "Rp. \(price.formattedWithSeparator)"
+  }
+  
+  /// Function to initalize empty data
+  private func initialize() {
+    /// First check the data if the data exists
+    let realm = try! Realm()
+    let results = realm.objects(Category.self)
+    if results.count == 0 {
+      /// Then append the data if the data does not exists
+      let koreanCategory = Category()
+      koreanCategory.name = "Korean"
+      koreanCategory.isSelected = true
+      koreanCategory.total = 10
+      koreanCategory.totalPrice = 100000
+      
+      let koreanMenu1 = Menu()
+      koreanMenu1.name = "Bibimbap"
+      koreanMenu1.quantity = 5
+      
+      let koreanMenu2 = Menu()
+      koreanMenu2.name = "Kimchi"
+      koreanMenu2.quantity = 4
+      
+      let koreanMenu3 = Menu()
+      koreanMenu3.name = "Japchae"
+      koreanMenu3.quantity = 1
+      
+      koreanCategory.menuList.append(koreanMenu1)
+      koreanCategory.menuList.append(koreanMenu2)
+      koreanCategory.menuList.append(koreanMenu3)
+      
+      let japaneseCategory = Category()
+      japaneseCategory.name = "Japanese"
+      japaneseCategory.isSelected = false
+      japaneseCategory.total = 1
+      japaneseCategory.totalPrice = 10000
+      
+      let japaneseMenu1 = Menu()
+      japaneseMenu1.name = "Sushi"
+      japaneseMenu1.quantity = 1
+      
+      let japaneseMenu2 = Menu()
+      japaneseMenu2.name = "Sashimi"
+      
+      let japanesemenu3 = Menu()
+      japanesemenu3.name = "Udon"
+      
+      let japaneseMenu4 = Menu()
+      japaneseMenu4.name = "Ramen"
+      
+      japaneseCategory.menuList.append(japaneseMenu1)
+      japaneseCategory.menuList.append(japaneseMenu2)
+      japaneseCategory.menuList.append(japanesemenu3)
+      japaneseCategory.menuList.append(japaneseMenu4)
+      
+      let chineseCategory = Category()
+      chineseCategory.name = "Chinese"
+      chineseCategory.isSelected = false
+      
+      let chineseMenu1 = Menu()
+      chineseMenu1.name = "Lo Mie"
+      
+      chineseCategory.menuList.append(chineseMenu1)
+      
+      let indonesianCategory = Category()
+      indonesianCategory.name = "Indonesian"
+      
+      let indonesianMenu1 = Menu()
+      indonesianMenu1.name = "Soto Ayam"
+      
+      let indonesianMenu2 = Menu()
+      indonesianMenu2.name = "Pecel"
+      
+      let indonesianMenu3 = Menu()
+      indonesianMenu3.name = "Soto Betawi"
+      
+      let indonesianMenu4 = Menu()
+      indonesianMenu4.name = "Rawon"
+      
+      let indonesianMenu5 = Menu()
+      indonesianMenu5.name = "Sate Ayam"
+      
+      let indonesianMenu6 = Menu()
+      indonesianMenu6.name = "Sate Kambing"
+      
+      indonesianCategory.menuList.append(indonesianMenu1)
+      indonesianCategory.menuList.append(indonesianMenu2)
+      indonesianCategory.menuList.append(indonesianMenu3)
+      indonesianCategory.menuList.append(indonesianMenu4)
+      indonesianCategory.menuList.append(indonesianMenu5)
+      indonesianCategory.menuList.append(indonesianMenu6)
+      
+      let americanCategory = Category()
+      americanCategory.name = "American"
+      
+      let americanMenu1 = Menu()
+      americanMenu1.name = "Steak"
+      
+      americanCategory.menuList.append(americanMenu1)
+      
+      /// Append the initialized data to the local realm database
+      try! realm.write {
+        realm.add(koreanCategory)
+        realm.add(japaneseCategory)
+        realm.add(chineseCategory)
+        realm.add(indonesianCategory)
+        realm.add(americanCategory)
+      }
+    }
+    categoryData = Array(results)
   }
 }
 
