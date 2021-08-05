@@ -10,6 +10,8 @@
 		2B21C0C1F06C2099D257E842 /* Pods_FlickTestProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC1B6877ED8BD55E87CD3A5 /* Pods_FlickTestProject.framework */; };
 		37911ED5992EEB1C4888DE42 /* Pods_FlickTestProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD1FD6321B8407FFEDA90F5 /* Pods_FlickTestProjectTests.framework */; };
 		3EE16A9A89EE0B0BAC25AD93 /* Pods_FlickTestProject_FlickTestProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6225C9E511DF18036333E022 /* Pods_FlickTestProject_FlickTestProjectUITests.framework */; };
+		4318EF7B26BC087E0089C72D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4318EF7A26BC087E0089C72D /* Category.swift */; };
+		4318EF7D26BC08A20089C72D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4318EF7C26BC08A20089C72D /* Menu.swift */; };
 		4331B48826BA3989001E8510 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48626BA3989001E8510 /* MenuTableViewCell.swift */; };
 		4331B48926BA3989001E8510 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4331B48726BA3989001E8510 /* MenuTableViewCell.xib */; };
 		4331B48B26BAE4AD001E8510 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331B48A26BAE4AD001E8510 /* Formatter.swift */; };
@@ -69,6 +71,8 @@
 		2A674AF3A62342912A779A1F /* Pods-FlickTestProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickTestProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FlickTestProjectTests/Pods-FlickTestProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2BC1B6877ED8BD55E87CD3A5 /* Pods_FlickTestProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickTestProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		330545A9310DF0F27E5F5C02 /* Pods-FlickTestProject-FlickTestProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickTestProject-FlickTestProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-FlickTestProject-FlickTestProjectUITests/Pods-FlickTestProject-FlickTestProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4318EF7A26BC087E0089C72D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		4318EF7C26BC08A20089C72D /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4331B48626BA3989001E8510 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		4331B48726BA3989001E8510 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		4331B48A26BAE4AD001E8510 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -129,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4318EF7926BC086A0089C72D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4318EF7A26BC087E0089C72D /* Category.swift */,
+				4318EF7C26BC08A20089C72D /* Menu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4338D48C26A944CA0075037A = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +205,7 @@
 		4338D4CC26A952E80075037A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4318EF7926BC086A0089C72D /* Models */,
 				43DC50EB26B95D500049DB6A /* Views */,
 				43DC50EA26B95D180049DB6A /* ViewControllers */,
 			);
@@ -530,8 +544,10 @@
 				43DC517F26B95ECE0049DB6A /* Reusable.swift in Sources */,
 				4331B48826BA3989001E8510 /* MenuTableViewCell.swift in Sources */,
 				4332E52E26A973AB00BAE8A1 /* UIFont.swift in Sources */,
+				4318EF7D26BC08A20089C72D /* Menu.swift in Sources */,
 				4338D4CF26A955330075037A /* UIButton.swift in Sources */,
 				43DC517B26B95E610049DB6A /* UITableView.swift in Sources */,
+				4318EF7B26BC087E0089C72D /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +728,7 @@
 				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -743,6 +760,7 @@
 				INFOPLIST_KEY_CFBundleVersion = 1;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

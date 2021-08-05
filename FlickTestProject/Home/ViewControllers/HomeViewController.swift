@@ -8,21 +8,6 @@
 import UIKit
 import RealmSwift
 
-class Category: Object {
-  @objc dynamic var name: String = ""
-  @objc dynamic var isSelected: Bool = false
-  var menuList = List<Menu>()
-  @objc dynamic var total: Int = 0
-  @objc dynamic var totalPrice: Int = 0
-}
-
-class Menu: Object {
-  @objc dynamic var name: String = ""
-  @objc dynamic var menuDescription: String = ""
-  @objc dynamic var quantity: Int = 0
-  @objc dynamic var price: Int = 10000
-}
-
 class HomeViewController: UIViewController {
   
   @IBOutlet weak var categoryCollectionView: UICollectionView!
@@ -158,20 +143,23 @@ extension HomeViewController {
       let koreanCategory = Category()
       koreanCategory.name = "Korean"
       koreanCategory.isSelected = true
-      koreanCategory.total = 10
-      koreanCategory.totalPrice = 100000
       
       let koreanMenu1 = Menu()
       koreanMenu1.name = "Bibimbap"
-      koreanMenu1.quantity = 5
+      koreanMenu1.quantity = 0
+      koreanMenu1.price = 10000
+      koreanMenu1.menuDescription = "Ini adalah bibimbap"
       
       let koreanMenu2 = Menu()
       koreanMenu2.name = "Kimchi"
-      koreanMenu2.quantity = 4
+      koreanMenu2.quantity = 0
+      koreanMenu2.price = 20000
+      koreanMenu2.menuDescription = "Kimchiii!!!!!!!"
       
       let koreanMenu3 = Menu()
       koreanMenu3.name = "Japchae"
-      koreanMenu3.quantity = 1
+      koreanMenu3.quantity = 0
+      koreanMenu3.price = 30000
       
       koreanCategory.menuList.append(koreanMenu1)
       koreanCategory.menuList.append(koreanMenu2)
@@ -180,21 +168,22 @@ extension HomeViewController {
       let japaneseCategory = Category()
       japaneseCategory.name = "Japanese"
       japaneseCategory.isSelected = false
-      japaneseCategory.total = 1
-      japaneseCategory.totalPrice = 10000
       
       let japaneseMenu1 = Menu()
       japaneseMenu1.name = "Sushi"
-      japaneseMenu1.quantity = 1
+      japaneseMenu1.price = 10000
       
       let japaneseMenu2 = Menu()
       japaneseMenu2.name = "Sashimi"
+      japaneseMenu2.price = 20000
       
       let japanesemenu3 = Menu()
       japanesemenu3.name = "Udon"
+      japanesemenu3.price = 30000
       
       let japaneseMenu4 = Menu()
       japaneseMenu4.name = "Ramen"
+      japaneseMenu4.price = 40000
       
       japaneseCategory.menuList.append(japaneseMenu1)
       japaneseCategory.menuList.append(japaneseMenu2)
